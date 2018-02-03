@@ -55,15 +55,22 @@ resorts.each { |resort, coords|  instance_variable_set("@#{resort}" + "_data", J
 
 
 # create final instance variables for the view
-
+# Currently returns "cannot coerce Nil to float error" # .to_f.round(1)
 resorts.each { |resort, coords|  
-	instance_variable_set("@#{resort}" + "_today", (instance_variable_get("@#{resort}" + "_data")["daily"]["data"][0]["precipAccumulation"]).round(1)) 
-    instance_variable_set("@#{resort}" + "_tomorrow",   (instance_variable_get("@#{resort}" + "_data")["daily"]["data"][1]["precipAccumulation"]).round(1)) 
-    instance_variable_set("@#{resort}" + "_three_day",   (instance_variable_get("@#{resort}" + "_data")["daily"]["data"][1]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][2]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][3]["precipAccumulation"]).round(1)  ) 
-    instance_variable_set("@#{resort}" + "_seven_day",   (instance_variable_get("@#{resort}" + "_data")["daily"]["data"][1]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][2]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][3]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][4]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][5]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][6]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][7]["precipAccumulation"]).round(1) ) 
+	instance_variable_set("@#{resort}" + "_today", (instance_variable_get("@#{resort}" + "_data")["daily"]["data"][0]["precipAccumulation"].to_f.round(1)) ) 
+    instance_variable_set("@#{resort}" + "_tomorrow",   (instance_variable_get("@#{resort}" + "_data")["daily"]["data"][1]["precipAccumulation"].to_f.round(1) )) 
+    instance_variable_set("@#{resort}" + "_three_day",   (instance_variable_get("@#{resort}" + "_data")["daily"]["data"][1]["precipAccumulation"].to_f + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][2]["precipAccumulation"].to_f + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][3]["precipAccumulation"].to_f).round(1)) 
+    instance_variable_set("@#{resort}" + "_seven_day",   (instance_variable_get("@#{resort}" + "_data")["daily"]["data"][1]["precipAccumulation"].to_f + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][2]["precipAccumulation"].to_f + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][3]["precipAccumulation"].to_f + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][4]["precipAccumulation"].to_f + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][5]["precipAccumulation"].to_f + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][6]["precipAccumulation"].to_f + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][7]["precipAccumulation"].to_f).round(1) ) 
 } 
 
 
+
+
+# resorts.each { |resort, coords|  
+    
+#     instance_variable_set("@#{resort}" + "_three_day",   (instance_variable_get("@#{resort}" + "_data")["daily"]["data"][1]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][2]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][3]["precipAccumulation"])) 
+#     #instance_variable_set("@#{resort}" + "_seven_day",   (instance_variable_get("@#{resort}" + "_data")["daily"]["data"][1]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][2]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][3]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][4]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][5]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][6]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][7]["precipAccumulation"]) ) 
+# } 
 
 
 
