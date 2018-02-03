@@ -36,6 +36,13 @@ resorts = {
   :Changbaishan => [41.7446585,127.6853884],
   :Chongli => [41.0354696,114.9045811]
   
+  # Uncomment below to test melbourne (no precipAccumulation in JSON) 
+  # for potential issues when precipAccumulation is not present in JSON
+  # https://api.darksky.net/forecast/979b169b4243ddb0a2ea22801e966bd0/-37.8136,144.9631
+  #,:Melbourne => [-37.8136,144.9631]
+  # No issues in controller -> @Melbourne and @Melbourne_today return Nil
+  # Assuming no issues in view
+
   
   }
 
