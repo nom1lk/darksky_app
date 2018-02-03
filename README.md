@@ -1,5 +1,8 @@
 # darksky_app
 
+Available: https://all-resorts.herokuapp.com/
+
+
 rails new darksky1 --database=postgresql
 
 ruby '2.4.2'
