@@ -68,6 +68,19 @@ resorts.each { |resort, coords|
 
 
 
+render template: 'scrape_darksky'
+
+end
+
+
+
+
+end
+
+
+
+
+
 
 
 
@@ -95,83 +108,6 @@ resorts.each { |resort, coords|
 # @seven_day = (data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] + data["daily"]["data"][3]["precipAccumulation"] + data["daily"]["data"][4]["precipAccumulation"] + data["daily"]["data"][5]["precipAccumulation"] + data["daily"]["data"][6]["precipAccumulation"] + data["daily"]["data"][7]["precipAccumulation"]).round(1)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-render template: 'scrape_darksky'
-
-end
-
-
-
-
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-############## EVERYTHING BELOW HERE IS WORKING - CAN BE DELETED
-
-# works
-list = ["test1","test2","test3"] 
-
-list.each { |t| instance_variable_set("@#{t}_var".to_sym, t) }
-#
-
-
-
-##### DWD - WORKS
-for each in resorts 
-puts each[0]
-end
-
-
-
-
-######
-
-
-# DOESN'T WORK
-for each in resorts
-
-"#{each[0]}" + "_url" = "https://api.darksky.net/forecast/979b169b4243ddb0a2ea22801e966bd0/" + each[1].to_s + "," + each[2].to_s
-
-end
-
-######
-
-
-
-#### ALso doesn't work
-resorts.each do |resort, coords| 
-
-	"#{resort}" + "_url" = "https://api.darksky.net/forecast/979b169b4243ddb0a2ea22801e966bd0/" + coords[0].to_s + "," + coords[1].to_s
-
-end 
-
-############## 
 
 
 
