@@ -44,11 +44,37 @@ resorts = {
 
 
 
+# this generates urls programmatically and stores them as instance variables e.g. @Niseko_url (note the upper case first letter - exact same as symbols in resorts hash)
+resorts.each { |resort, coords|  instance_variable_set("@#{resort}" + "_url", 
+	"https://api.darksky.net/forecast/979b169b4243ddb0a2ea22801e966bd0/" + 
+	coords[0].to_s + "," + coords[1].to_s)  }     
 
-resorts.each { |resort, coords|  instance_variable_set("@#{resort}" + "_url", "https://api.darksky.net/forecast/979b169b4243ddb0a2ea22801e966bd0/" + coords[0].to_s + "," + coords[1].to_s)  }     
+
+# takes around 20 seconds - ouch
+resorts.each { |resort, coords|  instance_variable_set("@#{resort}" + "_data", JSON.parse(Nokogiri::HTML(open(instance_variable_get("@#{resort}" + "_url"))))) } 
 
 
 
+
+
+
+# convert all of this to work with a loop through hash
+@today = (data["daily"]["data"][0]["precipAccumulation"]).round(1)
+@tomorrow = (data["daily"]["data"][1]["precipAccumulation"]).round(1)
+@three_day = (data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] + data["daily"]["data"][3]["precipAccumulation"]).round(1) 
+@seven_day = (data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] + data["daily"]["data"][3]["precipAccumulation"] + data["daily"]["data"][4]["precipAccumulation"] + data["daily"]["data"][5]["precipAccumulation"] + data["daily"]["data"][6]["precipAccumulation"] + data["daily"]["data"][7]["precipAccumulation"]).round(1)
+
+
+
+
+
+
+
+# A bit about instance_variable_get:
+# From here: https://stackoverflow.com/questions/30840127/get-value-from-string-representing-local-variable
+# eval("@Niseko_url")
+# instance_variable_get("@Niseko_url")
+# binding.local_variable_get("variable") - doesn't work here since we're dealing with an instance variable, not a local one
 
 
 
@@ -65,6 +91,14 @@ data = JSON.parse(doc)
 @three_day = (data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] + data["daily"]["data"][3]["precipAccumulation"]).round(1) 
 #seven_day = data["daily"]["data"][0]["precipAccumulation"] + data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] + data["daily"]["data"][3]["precipAccumulation"] + data["daily"]["data"][4]["precipAccumulation"] + data["daily"]["data"][5]["precipAccumulation"] + data["daily"]["data"][6]["precipAccumulation"]
 @seven_day = (data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] + data["daily"]["data"][3]["precipAccumulation"] + data["daily"]["data"][4]["precipAccumulation"] + data["daily"]["data"][5]["precipAccumulation"] + data["daily"]["data"][6]["precipAccumulation"] + data["daily"]["data"][7]["precipAccumulation"]).round(1)
+
+
+
+
+
+
+
+
 
 
 
