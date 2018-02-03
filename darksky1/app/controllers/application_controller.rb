@@ -45,7 +45,7 @@ resorts = {
 
 
 
-resorts.each { |resort, coords|  instance_variable_set("@#{resort}", "https://api.darksky.net/forecast/979b169b4243ddb0a2ea22801e966bd0/" + coords[0].to_s + "," + coords[1].to_s)  }     
+resorts.each { |resort, coords|  instance_variable_set("@#{resort}" + "_url", "https://api.darksky.net/forecast/979b169b4243ddb0a2ea22801e966bd0/" + coords[0].to_s + "," + coords[1].to_s)  }     
 
 
 
