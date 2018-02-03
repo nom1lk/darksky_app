@@ -54,15 +54,17 @@ resorts.each { |resort, coords|  instance_variable_set("@#{resort}" + "_url",
 resorts.each { |resort, coords|  instance_variable_set("@#{resort}" + "_data", JSON.parse(Nokogiri::HTML(open(instance_variable_get("@#{resort}" + "_url"))))) } 
 
 
+# create final instance variables for the view
+
+resorts.each { |resort, coords|  
+	instance_variable_set("@#{resort}" + "_today", (instance_variable_get("@#{resort}" + "_data")["daily"]["data"][0]["precipAccumulation"]).round(1)) 
+    instance_variable_set("@#{resort}" + "_tomorrow",   (instance_variable_get("@#{resort}" + "_data")["daily"]["data"][1]["precipAccumulation"]).round(1)) 
+    instance_variable_set("@#{resort}" + "_three_day",   (instance_variable_get("@#{resort}" + "_data")["daily"]["data"][1]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][2]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][3]["precipAccumulation"]).round(1)  ) 
+    instance_variable_set("@#{resort}" + "_seven_day",   (instance_variable_get("@#{resort}" + "_data")["daily"]["data"][1]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][2]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][3]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][4]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][5]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][6]["precipAccumulation"] + instance_variable_get("@#{resort}" + "_data")["daily"]["data"][7]["precipAccumulation"]).round(1) ) 
+} 
 
 
 
-
-# convert all of this to work with a loop through hash
-@today = (data["daily"]["data"][0]["precipAccumulation"]).round(1)
-@tomorrow = (data["daily"]["data"][1]["precipAccumulation"]).round(1)
-@three_day = (data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] + data["daily"]["data"][3]["precipAccumulation"]).round(1) 
-@seven_day = (data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] + data["daily"]["data"][3]["precipAccumulation"] + data["daily"]["data"][4]["precipAccumulation"] + data["daily"]["data"][5]["precipAccumulation"] + data["daily"]["data"][6]["precipAccumulation"] + data["daily"]["data"][7]["precipAccumulation"]).round(1)
 
 
 
@@ -81,16 +83,16 @@ resorts.each { |resort, coords|  instance_variable_set("@#{resort}" + "_data", J
 
 
 
-# niseko
-url = "https://api.darksky.net/forecast/979b169b4243ddb0a2ea22801e966bd0/42.7925607,140.6145884"
-doc = Nokogiri::HTML(open(url))
-data = JSON.parse(doc)
-@today = (data["daily"]["data"][0]["precipAccumulation"]).round(1)
-@tomorrow = (data["daily"]["data"][1]["precipAccumulation"]).round(1)
-#three_day = data["daily"]["data"][0]["precipAccumulation"] + data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] 
-@three_day = (data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] + data["daily"]["data"][3]["precipAccumulation"]).round(1) 
-#seven_day = data["daily"]["data"][0]["precipAccumulation"] + data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] + data["daily"]["data"][3]["precipAccumulation"] + data["daily"]["data"][4]["precipAccumulation"] + data["daily"]["data"][5]["precipAccumulation"] + data["daily"]["data"][6]["precipAccumulation"]
-@seven_day = (data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] + data["daily"]["data"][3]["precipAccumulation"] + data["daily"]["data"][4]["precipAccumulation"] + data["daily"]["data"][5]["precipAccumulation"] + data["daily"]["data"][6]["precipAccumulation"] + data["daily"]["data"][7]["precipAccumulation"]).round(1)
+# ORIGINAL 
+# url = "https://api.darksky.net/forecast/979b169b4243ddb0a2ea22801e966bd0/42.7925607,140.6145884"
+# doc = Nokogiri::HTML(open(url))
+# data = JSON.parse(doc)
+# @today = (data["daily"]["data"][0]["precipAccumulation"]).round(1)
+# @tomorrow = (data["daily"]["data"][1]["precipAccumulation"]).round(1)
+# #three_day = data["daily"]["data"][0]["precipAccumulation"] + data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] 
+# @three_day = (data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] + data["daily"]["data"][3]["precipAccumulation"]).round(1) 
+# #seven_day = data["daily"]["data"][0]["precipAccumulation"] + data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] + data["daily"]["data"][3]["precipAccumulation"] + data["daily"]["data"][4]["precipAccumulation"] + data["daily"]["data"][5]["precipAccumulation"] + data["daily"]["data"][6]["precipAccumulation"]
+# @seven_day = (data["daily"]["data"][1]["precipAccumulation"] + data["daily"]["data"][2]["precipAccumulation"] + data["daily"]["data"][3]["precipAccumulation"] + data["daily"]["data"][4]["precipAccumulation"] + data["daily"]["data"][5]["precipAccumulation"] + data["daily"]["data"][6]["precipAccumulation"] + data["daily"]["data"][7]["precipAccumulation"]).round(1)
 
 
 
