@@ -15,26 +15,26 @@ require 'open-uri'
 
 resorts = {
   
-  :Niseko => [42.7925607,140.6145884],
-  :Rusutsu => [42.720765,140.8246208],
-  :Furano => [43.2788929,142.3346243],
-  :Kiroro => [43.1015532,143.5976088],
+  :Niseko => [42.864462,140.701598],
+  :Rusutsu => [42.739169,140.910508],
+  :Furano => [43.329196,142.337712],
+  :Kiroro => [43.075914,140.982185],
   
-  :Hakuba => [36.6908076,137.7758388],
-  :Nozawa_Onsen => [36.9332568,138.4344672],
-  :Shiga_Kogen => [36.7052466,138.5058287],
-  :Myoko_Kogen => [36.892743,138.1740073],
+  :Hakuba => [36.702350,137.832192],
+  :Nozawa_Onsen => [36.920301,138.451982],
+  :Shiga_Kogen => [36.767651,138.514797],
+  :Myoko_Kogen => [36.887204,138.177576],
   
-  :YongPyong => [37.6429587,128.6781007],
-  :Alpensia => [37.6542186,128.6695522],
-  :Phoenix_Snow_Park => [37.5812246,128.3251215],
-  :High1_Resort => [37.2049058,128.8375798],
-  :Vivaldi_Park => [37.648144,127.6819313],
+  :YongPyong => [37.643422,128.680311],
+  :Alpensia => [37.654394,128.671719],
+  :Phoenix_Snow_Park => [37.574514,128.322196],
+  :High1_Resort => [37.205229,128.839780],
+  :Vivaldi_Park => [37.643741,127.683793],
   
-  :Yabuli => [44.780865,128.4454603],
-  :Beidahu => [43.422146,126.6160153], #took ski field
-  :Changbaishan => [41.7446585,127.6853884],
-  :Chongli => [41.0354696,114.9045811]
+  :Yabuli => [44.781119,128.447592],
+  :Beidahu => [43.471269,126.493526], #took ski field
+  :Changbaishan => [42.102153,127.505355],
+  :Chongli => [40.975317,115.282733]
   
   # Uncomment below to test melbourne (no precipAccumulation in JSON) 
   # for potential issues when precipAccumulation is not present in JSON
