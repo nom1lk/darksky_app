@@ -15,4 +15,13 @@ module Darksky1
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
   end
+
+config.action_dispatch.default_headers = {
+    'X-Frame-Options' => 'ALLOWALL'
+}
+
+  
 end
+
+
+
