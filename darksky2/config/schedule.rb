@@ -23,7 +23,7 @@
 set :output, "#{path}/log/cron.log"
 
 
-every 1.minute do
+every 30.minutes do
   runner "eval(File.read 'lib/extract_load.rb')"
 end 
 
