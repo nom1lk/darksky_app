@@ -54,7 +54,7 @@ resorts = {
 # ted: ed754b881023885f03ee8940a84b50cd
 # this generates urls programmatically and stores them as instance variables e.g. @Niseko_url (note the upper case first letter - exact same as symbols in resorts hash)
 resorts.each { |resort, coords|  instance_variable_set("@#{resort}" + "_url", 
-	"https://api.darksky.net/forecast/979b169b4243ddb0a2ea22801e966bd0/" + 
+	#"https://api.darksky.net/forecast/979b169b4243ddb0a2ea22801e966bd0/" + 
 	coords[0].to_s + "," + coords[1].to_s)  }     
 
 
