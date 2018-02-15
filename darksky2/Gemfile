@@ -33,6 +33,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Me adding whenever
+# gem which whenever returns the following:
+# /Users/stevecondylios/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/whenever-0.10.0/lib/whenever.rb
+gem 'whenever', require: false # From here: https://github.com/javan/whenever/blob/master/README.md
+
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
